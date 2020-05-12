@@ -36,3 +36,5 @@ imgProcessadaClose = cv2.morphologyEx(imgBinarizada, cv2.MORPH_CLOSE, elementoEs
 imgFinal = cv2.dilate(cv2.morphologyEx(imgBinarizada, cv2.MORPH_CLOSE, elementoEstruturante), elementoEstruturante, iterations=1)
 cv2.imshow("Final Close + Dilate", imgFinal)
 cv2.waitKey(0)
+
+cv2.imwrite("ex8-processed.jpg", imgFinal)
