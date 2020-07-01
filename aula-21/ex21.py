@@ -11,9 +11,7 @@ z = np.float32(z)
 plt.hist(z,256,[0,256]),plt.show()
 
 
-# Define criteria = ( type, max_iter = 10 , epsilon = 1.0 )
 criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 10, 1.0)
-# Set flags (Just to avoid line break in the code)
 flags = cv.KMEANS_RANDOM_CENTERS
 # Apply KMeans
 compactness,labels,centers = cv.kmeans(z,2,None,criteria,10,flags)
