@@ -1,4 +1,5 @@
-from sklearn.linear_model import Perceptron
+from sklearn.neural_network import MLPClassifier
+from sklearn.model_selection import train_test_split, cross_validate
 from sklearn.model_selection import train_test_split
 from imutils import paths
 import numpy as np
@@ -65,13 +66,18 @@ print("[INFO] features matrix: {:.2f}MB".format(
 
 
 print("[INFO] evaluating raw pixel accuracy...")
-model = Perceptron(tol=1e-3, random_state=0)
+model = MLPClassifier(random_state=1, max_iter=300)
 model.fit(trainRI, trainRL)
 acc = model.score(testRI, testRL)
 print('[INFO] raw pixel accuracy: {:.2f}%'.format(acc*100))
 
 print("[INFO] evaluating raw pixel accuracy...")
-model = Perceptron(tol=1e-3, random_state=0)
+model = MLPClassifier(random_state=1, max_iter=300)
 model.fit(trainFeat, trainLabels)
 acc = model.score(trainFeat, trainLabels)
 print('[INFO] histogram accuracy: {:.2f}%'.format(acc*100))
+
+
+scores = cross_validate(model, trainFeat, trainLabels, cv=5, n_jobs = -1 )
+
+print(scores)
