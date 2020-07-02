@@ -30,7 +30,11 @@ img4 = np.uint8(img4)
 imgs = [[img,0],[img2,1],[img3,2],[img4,1]]
 
 
+
+
+
 def solution(transform, theta):
+    transform_original = transform
     lines = cv2.HoughLines(transform,1,np.pi/180,theta)
     transform = cv2.cvtColor(transform, cv2.THRESH_BINARY_INV)
 
@@ -48,6 +52,7 @@ def solution(transform, theta):
 
                 cv2.line(transform,(x1,y1),(x2,y2),(0,0,255),2)
 
+        cv2.imshow('Original', transform_original)
         cv2.imshow('Imagem', transform)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
