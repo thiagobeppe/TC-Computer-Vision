@@ -1,0 +1,9 @@
+YOLO - 
+	Ferramentas como o YOLO, que tem uma vasta utilização em projetos em tempo real, precisam de uma velocidade de processamento o mais rápido possível, sendo assim ela procura rodar uma rede usando somente um passo, fazer a classificação e definição de região em. Para isso a imagem é dividida em setores quadriculares de tamanho parametrizado sendo sempre MxM e assim pega-se um ponto central alinhando N caixas, sendo N também um número parametrizado. Para cada uma dessas caixas é feito uma comparação entre o % de classificação  e as variações dos verticies relacionados ao centro do objeto.
+
+SSD - 
+	A imagem passa por uma série de camadas convolucionais com diferentes filtros e para cada "feature map" é utilizado um filtro 3x3 para metrificar um conjuto de bounding boxes menor, para cada bouding box é necessário fazer uma predição do offset e a probabilidade dessa "box" pertencer a cada class pré-definida. Durante o treinado é necessário fazer uma comparação entre o bouding box original com a prevista, sendo assim a box com melhor nota é considerada possitiva. Tem um funcionamento bem similar a YOLO, sendo "one-shot" mas tem como diferença principal a inferência da bouding box.
+
+Faster R-CNN
+	Uma R-CNN extrai possíveis objetos utilizando como método possível um "Seletive Search" e a partir desses objetos as caracteristicas são extraídas usando uma CNN e classifica ela com SVM. Sendo o faster uma evolução do R-CNN comessa-se a utilizar um RPN (Region Proposal  Network) e propoe a retirada da etapa de identificação de interesse, já que o RPN é rodado a partir da CNN.
+
